@@ -20,13 +20,15 @@
     </thead>
     <tr th:each="user: ${users}">
         <td >
-            <a th:href = "@{/users/show(id = ${user.getId()})}" th:text="${user.getId()}"></a>
+            <a th:href = "@{/admin/show(id = ${user.getId()})}" th:text="${user.getId()}"></a>
         </td>
         <td th:text="${user.getUsername()}"></td>
         <td th:text="${user.getFirstName()}"></td>
         <td th:text="${user.getLastName()}"></td>
         <td th:text="${user.getEmail()}"></td>
-        <td th:text="${user.getRoles()}"></td>
+        <td>
+            <li th:each="role: ${user.getRoles()}" th:text="${role.getName()}"></li>
+        </td>
     </tr>
 </table>
 <a th:href="@{/users/new}">Create new user</a>
